@@ -1,5 +1,30 @@
 # MyReads Project
 
+This is the react fundamentals project for the MyReads Book site.
+
+Built with Node v18.20.4
+
+### dependencies required:
+
+"react-router-dom": "^6.6.0",
+
+## Screenshot of MyReads App
+
+<img alt="img.png" height="800" src="img.png" width="800"/>
+
+## Known Compatibility issues
+
+Depending on your software installation, you may encounter errors that prevent the app from starting, running the code before usually resovles it
+
+### `npm install react-scripts@latest --save`
+
+## To Launch Application
+
+### `cd starter`
+### `npm install`
+### `npm start`
+
+##
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
 
 Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) to bootstrap the project.
