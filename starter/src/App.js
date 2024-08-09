@@ -48,12 +48,12 @@ function App() {
                     key={shelf.shelfId}
                     shelfLabel={shelf.title}
                     booksOnShelf={libraryBooks.filter(book => book.shelf === shelf.shelfId)}
-                    onMoveBook={handleBookMove}
+                    onShelfChange={handleBookMove}
                   />
                 ))}
               </div>
             } />
-            <Route path="/search" element={<SearchBooks onMoveBook={handleBookMove} />} />
+            <Route path="/search" element={<SearchBooks onShelfChange={handleBookMove} />} />
           </Routes>
         </main>
         <Footer />
