@@ -297,3 +297,9 @@ body,
 .close-search img {
   display: none; /* Hide image if using background-image */
 }
+
+.no-results-message{
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.5em;
+}
