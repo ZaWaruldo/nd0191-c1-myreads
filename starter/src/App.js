@@ -53,7 +53,7 @@ function App() {
                 ))}
               </div>
             } />
-            <Route path="/search" element={<SearchBooks onShelfChange={handleBookMove} />} />
+            <Route path="/search" element={<SearchBooks onShelfChange={handleBookMove} libraryBooks={libraryBooks} />} />
           </Routes>
         </main>
         <Footer />

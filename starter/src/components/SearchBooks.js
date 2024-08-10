@@ -5,7 +5,7 @@ import '../App.css';
 
 let filterTimeout; // global timeout
 
-function BookSearch({ onShelfChange }) {
+function BookSearch({ onShelfChange, libraryBooks }) { // Pass libraryBooks
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [noResults, setNoResults] = useState(false); // State to track book query result
@@ -19,23 +19,29 @@ function BookSearch({ onShelfChange }) {
 
     //wrap existing search function with timeout debounce
     filterTimeout = setTimeout(() => {
-        console.log('====>', query)
-          if (query.trim()) {
-            BooksAPI.search(query).then((results) => {
-              if (results.error) {
-                setSearchResults([]);
-                setNoResults(true); //True if there's an error
-              } else {
-                setSearchResults(results);
-                setNoResults(results.length === 0); // Set if results are empty
-              }
-            });
-          } else {
+      if (query.trim()) {
+        BooksAPI.search(query).then((results) => {
+          if (results.error) {
             setSearchResults([]);
-            setNoResults(false); // Reset when is empty
+            setNoResults(true); // True if there's an error
+          } else {
+            // Map through search results and check if book is in library
+            const updatedResults = results.map((book) => {
+              const bookInLibrary = libraryBooks.find(b => b.id === book.id);
+              book.shelf = bookInLibrary ? bookInLibrary.shelf : 'none';
+              return book;
+            });
+            setSearchResults(updatedResults);
+            setNoResults(updatedResults.length === 0); // Set if results are empty
           }
-        }, 500); // 500ms delay
-      };
+        });
+      } else {
+        setSearchResults([]);
+        setNoResults(false); // Set if results are empty
+      }
+    }, 500); // 500ms delay
+  };
+
 
 
 
